@@ -1254,6 +1254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1732217569}
   fieldOfView: 45
+  sightDistance: 10
   emitter: {fileID: 967121985}
   rend: {fileID: 500777458}
   canSeePlayer: 0
@@ -1274,6 +1275,36 @@ MonoBehaviour:
   - {fileID: 1265585099}
   - {fileID: 1233591960}
   reactionTime: 1
+  waitAtPointInterval: 2
+  eyePivot: {fileID: 1700783654}
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  looks:
+  - {fileID: 1912941652}
+  - {fileID: 1296124852}
+  - {fileID: 302556799}
   currentState: 0
 --- !u!195 &435261051
 NavMeshAgent:
@@ -1674,7 +1705,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1940939560}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 80, z: 0}
 --- !u!1 &487066666
 GameObject:
@@ -1875,6 +1906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1732217569}
   fieldOfView: 45
+  sightDistance: 10
   emitter: {fileID: 303440977}
   rend: {fileID: 1177090471}
   canSeePlayer: 0
@@ -1895,6 +1927,36 @@ MonoBehaviour:
   - {fileID: 1265585099}
   - {fileID: 280676866}
   reactionTime: 1
+  waitAtPointInterval: 2
+  eyePivot: {fileID: 594387244}
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  looks:
+  - {fileID: 1960644202}
+  - {fileID: 1845707343}
+  - {fileID: 1320640670}
   currentState: 0
 --- !u!195 &564077797
 NavMeshAgent:
@@ -2343,8 +2405,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615277062}
   m_LocalRotation: {x: -0.70710677, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.5495796, z: 0.022886235}
-  m_LocalScale: {x: 3.2694695, y: 3.2694695, z: 11.393865}
+  m_LocalPosition: {x: 0, y: 1.5495796, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 963191360}
   m_RootOrder: 0
@@ -2379,7 +2441,7 @@ Transform:
   m_LocalScale: {x: 1.044324, y: 0.012342248, z: 1.044324}
   m_Children: []
   m_Father: {fileID: 1940939560}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &630854816
 MeshRenderer:
@@ -3697,7 +3759,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: -0.99680185, z: 0, w: -0.079913095}
-  m_LocalPosition: {x: -10.477446, y: 1.375, z: -8.451863}
+  m_LocalPosition: {x: -11.887445, y: 1.375, z: -18.601862}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4052,7 +4114,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1940939560}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1177090470
 GameObject:
@@ -5165,7 +5227,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1940939560}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -80, z: 0}
 --- !u!1 &1565365425
 GameObject:
@@ -5358,7 +5420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.28
+      value: -11.69
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5366,7 +5428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.42
+      value: -18.57
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5415,7 +5477,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.477446
+      value: -11.887445
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5423,7 +5485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.451863
+      value: -18.601862
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6358,7 +6420,7 @@ Transform:
   m_LocalScale: {x: 1.044324, y: 0.012342248, z: 1.044324}
   m_Children: []
   m_Father: {fileID: 1940939560}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1923357670
 MeshRenderer:
@@ -6449,6 +6511,36 @@ MonoBehaviour:
   - {fileID: 487066669}
   - {fileID: 1112897997}
   reactionTime: 1
+  waitAtPointInterval: 2
+  eyePivot: {fileID: 181093806}
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  looks:
+  - {fileID: 1134410296}
+  - {fileID: 1528966353}
+  - {fileID: 480106855}
   currentState: 0
 --- !u!195 &1940939556
 NavMeshAgent:
@@ -6547,11 +6639,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 181093806}
-  - {fileID: 1923357669}
-  - {fileID: 630854815}
   - {fileID: 1134410296}
   - {fileID: 1528966353}
   - {fileID: 480106855}
+  - {fileID: 1923357669}
+  - {fileID: 630854815}
   - {fileID: 1433762491}
   m_Father: {fileID: 0}
   m_RootOrder: 11
@@ -6570,6 +6662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1732217569}
   fieldOfView: 45
+  sightDistance: 10
   emitter: {fileID: 615277063}
   rend: {fileID: 963191361}
   canSeePlayer: 0
