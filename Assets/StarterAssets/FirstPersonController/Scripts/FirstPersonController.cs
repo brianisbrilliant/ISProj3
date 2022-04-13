@@ -54,6 +54,10 @@ namespace StarterAssets
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
 
+		public bool crouched = false;
+		public float crouchScale = 0.5f;
+		private Vector3 startingScale = Vector3.one;
+
 		// cinemachine
 		private float _cinemachineTargetPitch;
 
@@ -90,6 +94,8 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+
+			startingScale = this.transform.localScale;
 		}
 
 		private void Update()
@@ -97,6 +103,7 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			Crouch();
 		}
 
 		private void LateUpdate()
@@ -224,6 +231,19 @@ namespace StarterAssets
 				_verticalVelocity += Gravity * Time.deltaTime;
 			}
 		}
+
+		private void Crouch()
+        {
+			if(crouched)
+            {
+				this.transform.localScale = startingScale * crouchScale;
+            }
+			else
+            {
+				this.transform.localScale = startingScale;
+
+			}
+        }
 
 		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
 		{
