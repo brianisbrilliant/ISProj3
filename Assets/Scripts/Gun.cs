@@ -21,9 +21,17 @@ public class Gun : MonoBehaviour
 
     public TextMeshPro nameText;
 
+    public Rigidbody bulletPrefab;  // the bullet to be spawned
+    public Transform bulSpawn;      // the bullet spawn location
+
+    bool onCooldown = false;
+
+    private Rigidbody rb;
+
     void Start() {
         // nameText = transform.GetChild(1).GetComponent<TextMeshPro>();
         Debug.Log("nameText: " + nameText);
+        rb = this.GetComponent<Rigidbody>();
     }
 
     public void Randomize() {
@@ -34,25 +42,7 @@ public class Gun : MonoBehaviour
         rateOfFire = Random.Range(rateOfFireRange.x, rateOfFireRange.y);
     }
 
-
-    public Rigidbody bulletPrefab;  // the bullet to be spawned
-    public Transform bulSpawn;      // the bullet spawn location
-
-    bool onCooldown = false;
-
-    // Update is called once per frame
-    void Update()
-    {
-        var mouse = Mouse.current;
-        if(mouse == null) return;
-
-        // isPressed
-        if(mouse.leftButton.isPressed) {
-            Fire();
-        }
-    }
-
-    void Fire() {
+    public void Fire() {
         if(!onCooldown) {
             Rigidbody bullet = Instantiate(bulletPrefab, bulSpawn.position, bulSpawn.rotation);
             bullet.AddRelativeForce(Vector3.forward * 50, ForceMode.Impulse);
@@ -68,5 +58,21 @@ public class Gun : MonoBehaviour
         onCooldown = true;
         yield return new WaitForSeconds(.5f);
         onCooldown = false;
+    }
+
+    public void Pickup(Transform hand) {
+        this.transform.SetParent(hand);
+        rb.isKinematic = true;  // don't let the gun fall
+        this.transform.position = hand.position;
+        this.transform.rotation = hand.rotation;
+
+    }
+
+    public void Drop() {
+        Debug.Log("Trying to Drop()");
+        this.transform.SetParent(null);
+        this.transform.Translate(-Vector3.forward * 2);
+        rb.isKinematic = false;  // let the gun fall
+        rb.AddRelativeForce(-Vector3.forward * 20, ForceMode.Impulse);
     }
 }

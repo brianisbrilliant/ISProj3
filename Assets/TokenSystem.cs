@@ -28,9 +28,6 @@ public class TokenSystem : MonoBehaviour
         }
         // we didn't find this guy in line? Let's add them.
         waitingLine.Enqueue(ai);
-
-
-
     }
 
     void Update() {
