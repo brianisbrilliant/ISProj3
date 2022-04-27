@@ -6,17 +6,28 @@ using UnityEngine.AI;       // for access to the navmeshagent
 public class MoveTo : MonoBehaviour
 {
     [SerializeField]
-    public Transform target;
+    public Transform target, bulSpawn;
 
     [SerializeField]
     float stoppingDistance = 10f;
 
+    [SerializeField]
+    Rigidbody bulletPrefab;
+
+    public bool hasToken = false;
+
     private NavMeshAgent agent;
+    TokenSystem tok;
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        if(target != null) {
+            tok = target.gameObject.GetComponent<TokenSystem>();
+        }
     }
 
     // Update is called once per frame
@@ -47,11 +58,24 @@ public class MoveTo : MonoBehaviour
     }
 
     void Fire() {
-        if(canFire) {
-            // shoot
-            Debug.Log("Pow!");
-            // at the end of each fire, use a coroutine to wait.
-            StartCoroutine(WaitToFire());
+        if(canFire){
+
+            if(hasToken) {
+                // shoot
+                Debug.Log("Pow!");
+                Rigidbody bullet = Instantiate(bulletPrefab, bulSpawn.position, bulSpawn.rotation);
+                bullet.AddRelativeForce(Vector3.forward * 50, ForceMode.Impulse);
+                Bullet bulletStuff = bullet.GetComponent<Bullet>();
+                // bulletStuff.elType = this.elType;
+                // bulletStuff.damage = this.damage;
+                hasToken = false;
+
+                // at the end of each fire, use a coroutine to wait.
+                StartCoroutine(WaitToFire());
+            }
+            else {
+                tok.GetInLine(this);
+            }
         }
     }
 
